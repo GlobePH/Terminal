@@ -99,30 +99,9 @@ function addMarker(){
 		marker.addListener('click', function() {
 		  infowindow.open(map, marker);
 		  setID(idNum);
+		  SetUsers(idNum);
 		});
 		
 	});
 	
-	/*var uluru = {lat: 14.5544795, lng: 121.0437651};
-	var contentString = '<div id="content">'+
-		'<div id="siteNotice">'+
-		'BGC Bus'+
-		'</div>';
-
-	var infowindow = new google.maps.InfoWindow({
-	  content: contentString
-	});
-
-	var bus = "img/terminal2-red.png";
-
-	var marker = new google.maps.Marker({
-	  position: uluru,
-	  map: map,
-	  title: 'BGC BUS',
-	  icon: bus
-	});
-
-	marker.addListener('click', function() {
-	  infowindow.open(map, marker);
-	});*/
 }

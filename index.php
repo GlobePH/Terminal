@@ -135,7 +135,7 @@ $(document).ready(function () {
 					          $.ajax({
 					                type: 'POST',
 					                async: true,
-					                url: "http://192.168.171.134/feed/add",
+					                url: "http://192.168.166.243/feed/add",
 					                data: dataparam,
 					                success: function (data) {
 					                    //alert("already add");
@@ -155,7 +155,7 @@ $(document).ready(function () {
 					          $.ajax({
 					                type: 'POST',
 					                async: true,
-					                url: "http://192.168.171.134/feed/add",
+					                url: "http://192.168.166.243/feed/add",
 					                data: dataparam,
 					                success: function (data) {
 					                    //alert("already add");
@@ -187,7 +187,7 @@ $(document).ready(function () {
 					            $.ajax({
 					                type: 'POST',
 					                async: true,
-					                url: "http://192.168.171.134/transaction/reaction/add",
+					                url: "http://192.168.166.243/transaction/reaction/add",
 					                data: dataparam,
 					                success: function (data) {
 					                    if (reactionId == 0) {
@@ -215,7 +215,7 @@ $(document).ready(function () {
 							var TerminalDetail = function (){
 								var id = window.idNum.toString();
 								//$("#terminalId").val(id);
-								var xurl = "http://192.168.171.134/terminal/";
+								var xurl = "http://192.168.166.243/terminal/";
 								var param = 'data/' + id;
 								var t = xurl + param;
 								$.ajax({
@@ -238,7 +238,7 @@ $(document).ready(function () {
 									$.each(data, function(index, element) {
 										feeds += '<div style="width:100%;"><div class="thumbnail"><div class="caption">';
 										feeds += '<h3>Terminal Name</h3>';
-										feeds += '<p><b>Status: ' + getStatus(element.Count) +'</b></p><p><b style="color:blue;">Statistics</b></p>';
+										feeds += '<p><b>Status: ' + element.Count +' ' + getStatus(element.Count) +'</b></p><p><b style="color:blue;">Statistics</b></p>';
 										feeds += '<p><b>Satisfied: '+ element.NoOfHappy.toString() +' <i class="em em-satisfied"></i> | Angry: '+ element.NoOfAngry.toString() + ' <i class="em em-angry"></i></b></p>';
 										feeds += '</div></div></div>';
 									});
@@ -284,7 +284,7 @@ $(document).ready(function () {
 							var id = window.idNum.toString();
 							$("#terminalId").val(id);
 							console.log(id);
-							var xurl = "http://192.168.171.134/";
+							var xurl = "http://192.168.166.243/";
 							var param = 'feed/' + id;
 							var t = xurl + param;
 							$.ajax({
@@ -319,7 +319,7 @@ $(document).ready(function () {
 						    window.setInterval(function () {
 						        reloadFeed();
 						        TerminalDetail();
-						    }, 1000);
+						    }, 3000);
 						</script>
 						<div id="feeds">
 						</div> 
@@ -389,6 +389,7 @@ $(document).ready(function () {
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/trans.js"></script>
     <!--<script type="text/javascript" src="js/ajax-test.js"></script>-->
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDWTNzyHPeLKkTj2f--_bd-kP5ji_6e3lk&libraries=places&callback=initAutocomplete&sensor=false"
          async defer></script>
