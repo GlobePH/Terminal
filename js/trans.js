@@ -1,6 +1,6 @@
 
 function addMarkerUsers(data){
-//alert(data);
+//console.log(data);
 	var name = "";
 
 	$.each(data, function(index, element) {
@@ -52,14 +52,14 @@ function SetUsers(idNum){
 	url: "http://192.168.171.204/terminal/dataUser/" + idNum,
 	async: true, //blocks window closes
 	success: function(data){
-		alert(data);
+		console.log(data);
 		querySuccess(data);
 	},
 	error: queryError
 	});
 
 	function queryError(){
-		alert("Error Encountered!");
+		console.log("Error Encountered!");
 	}
 	function querySuccess(data){
 

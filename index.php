@@ -16,9 +16,9 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
-
 <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <style>
       html, body {
         height: 100%;
@@ -29,7 +29,7 @@
         height: 100%;
       }
       .controls {
-        margin-top: 120px;
+        margin-top: 10px;
         border: 1px solid transparent;
         border-radius: 2px 0 0 2px;
         box-sizing: border-box;
@@ -140,11 +140,11 @@ $(document).ready(function () {
 					                url: "http://192.168.171.204/feed/add",
 					                data: dataparam,
 					                success: function (data) {
-					                    //alert("already add");
+					                    //console.log("already add");
 					                    $("#message").val("");
 					                },
 					                error: function () {
-					                    alert("An error occurred while trying to retrieve your data.", "error");
+					                    console.log("An error occurred while trying to retrieve your data.", "error");
 					                }
 					          });
 
@@ -160,11 +160,11 @@ $(document).ready(function () {
 					                url: "http://192.168.171.204/feed/add",
 					                data: dataparam,
 					                success: function (data) {
-					                    //alert("already add");
+					                    //console.log("already add");
 					                    $("#message").val("");
 					                },
 					                error: function () {
-					                    alert("An error occurred while trying to retrieve your data.", "error");
+					                    console.log("An error occurred while trying to retrieve your data.", "error");
 					                }
 					          });
 
@@ -178,6 +178,9 @@ $(document).ready(function () {
 					          });
 					          $("#btnangry").click(function() {
 					               addFeed.addReaction(1);
+					          });
+					          $("#btnhungry").click(function() {
+					          	   addFeed.addReaction(2);
 					          });
 					        },
 					     addReaction: function (reactionId) {
@@ -199,10 +202,12 @@ $(document).ready(function () {
 					                         tweet = $("#message").val();
 					                         addFeed.addMessageByText(tweet + " - is feeling angry.");
 					                    };
-					                    
+					                    if (reactionId == 2) {
+					                    	addFeed.addMessageByText("- is feeling hungry.");
+					                    };
 					                },
 					                error: function () {
-					                    alert("An error occurred while trying to retrieve your data.", "error");
+					                    console.log("An error occurred while trying to retrieve your data.", "error");
 					                }
 					            });
 					   }
@@ -233,16 +238,16 @@ $(document).ready(function () {
 								});
 
 								function queryError(){
-									alert("Error Encountered!");
+									console.log("Error Encountered!");
 								}
 								function querySuccess(data){
 									var feeds = "";
 									$.each(data, function(index, element) {
 										feeds += '<div style="width:100%;"><div class="thumbnail"><div class="caption">';
-										feeds += '<h3>Terminal Name</h3>';
+										feeds += '<h3>'+ getTerminalName() +'</h3>';
 										feeds += '<p><b>Average of '+element.AvePer30Mins+' passenger a minute.</b></p>';
-										feeds += '<p><b>Status: ' + element.Count +' ' + getStatus(element.Count) +'</b></p><p><b style="color:blue;">Statistics</b></p>';
-										feeds += '<p><b>Satisfied: '+ element.NoOfHappy.toString() +' <i class="em em-satisfied"></i> | Angry: '+ element.NoOfAngry.toString() + ' <i class="em em-angry"></i></b></p>';
+										feeds += '<p><b>Status: ' + getStatus(element.Count) +'</b></p><p><b style="color:blue;">Statistics</b></p>';
+										feeds += '<p><b>Satisfied: '+ element.NoOfHappy.toString() +' <i class="em em-satisfied"></i> | Angry: '+ element.NoOfAngry.toString() + ' <i class="em em-angry"></i> | Hungry: '+ element.NoOfHungry.toString() + ' <i class="em em-tired_face"></i></b></p>';
 										feeds += '</div></div></div>';
 									});
 									$('#terminaldetails').html(feeds);
@@ -252,13 +257,13 @@ $(document).ready(function () {
 							{
 								console.log("test"+count);
 								if (count <= 5) {
-									return "Light";
+									return "Light (" + count + " People)";
 								};
 								if (count >= 6 && count <= 50) {
-									return "Moderate";
+									return "Moderate (" + count + " People)";
 								};
 								if (count >= 51) {
-									return "Heavy";									
+									return "Heavy (" + count + " People)";									
 								};
 							}							
 						</script>
@@ -274,7 +279,7 @@ $(document).ready(function () {
 
 					          <button id="btnhappy" class="btn btn-default"><i class="em em-satisfied"></i></button>
 					          <button id="btnangry" class="btn btn-default"><i class="em em-angry"></i></button>
-
+					          <button id="btnhungry" class="btn btn-default"><i class="em em-tired_face"></i></button>
 					     </div><br />
      				<div>
          				<script type="text/javascript">
@@ -303,7 +308,7 @@ $(document).ready(function () {
 							});
 
 							function queryError(){
-								alert("Error Encountered!");
+								console.log("Error Encountered!");
 							}
 							function querySuccess(data){
 								var feeds = "";
@@ -412,7 +417,7 @@ $(document).ready(function () {
 			});
 
 			function queryError(){
-				alert("Error Encountered!");
+				console.log("Error Encountered!");
 			}
 			function querySuccess(data){
 				//var obj = $.parseJSON(data);
@@ -454,7 +459,7 @@ $(document).ready(function () {
 			}).data('value3');
 			
 			var msg = value2 ? 'Longitude=' + value2 + ", Latitue=" + value3: 'No Match';
-			//alert(msg);
+			//console.log(msg);
 			
 			if(isNaN(parseFloat(value2))==false && isNaN(parseFloat(value2))==false){
 				setLongLat(parseFloat(value2), parseFloat(value3));

@@ -12,6 +12,14 @@ var idNum = 1;
 
 var map = null;
 
+var TerminalName = '';
+function setTerminalName(terminal){
+	window.TerminalName = terminal;
+}
+function getTerminalName(){
+	return window.TerminalName;
+}
+
 function setLongLat(longi,lati){
 	latVal = lati;
 	longiVal = longi;
@@ -29,6 +37,10 @@ function setID(sentidNum){
 
 function getID(){
 	return window.idNum;
+}
+
+function getMap(){
+	return map;
 }
 
 function updateMap(){   
@@ -77,11 +89,13 @@ function addMarker(){
 		var Latval = element.Lat;
 		var idNum = element.id;
 		
+		var terminalName =  element.Name.toString();
+
 		var uluru = {lat: parseFloat(Latval), lng: parseFloat(Lonval)};
 		var contentString = '<div id="content">'+
 			'<span class="terminal_id"style="display:none;">'+idNum+'</span>' +
 			'<div id="siteNotice">'+
-			element.Name.toString() +
+			 terminalName +
 			'</div>';
 
 		var infowindow = new google.maps.InfoWindow({
@@ -100,6 +114,7 @@ function addMarker(){
 		  infowindow.open(map, marker);
 		  setID(idNum);
 		  SetUsers(idNum);
+		  setTerminalName(terminalName);
 		});
 		
 	});
