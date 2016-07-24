@@ -116,6 +116,13 @@ function addMarker(){
 		  SetUsers(idNum);
 		  setTerminalName(terminalName);
 		});
+
+		var circle = new google.maps.Circle({
+		  map: map,
+		  radius: 300,    // 10 miles in metres
+		  fillColor: '#AA0000'
+		});
+		circle.bindTo('center', marker, 'position');
 		
 	});
 	
