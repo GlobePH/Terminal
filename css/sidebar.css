@@ -44,7 +44,7 @@ html { height: 100%;}
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 520px;
+    width: 500px;
 }
 
 #page-content-wrapper {
@@ -64,7 +64,7 @@ html { height: 100%;}
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 520px;
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;

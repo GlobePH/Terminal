@@ -196,14 +196,16 @@ $(document).ready(function () {
 					                data: dataparam,
 					                success: function (data) {
 					                    if (reactionId == 0) {
-					                         addFeed.addMessageByText("Boom - is feeling happy.");
+					                    	tweet = $("#message").val();
+					                        addFeed.addMessageByText(tweet + " - is feeling happy.");
 					                    };
 					                    if (reactionId == 1) {
-					                         tweet = $("#message").val();
-					                         addFeed.addMessageByText(tweet + " - is feeling angry.");
+					                        tweet = $("#message").val();
+					                        addFeed.addMessageByText(tweet + " - is feeling angry.");
 					                    };
 					                    if (reactionId == 2) {
-					                    	addFeed.addMessageByText("- is feeling hungry.");
+					                    	tweet = $("#message").val();
+					                    	addFeed.addMessageByText(tweet + " - is feeling hungry.");
 					                    };
 					                },
 					                error: function () {

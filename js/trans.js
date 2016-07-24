@@ -8,13 +8,27 @@ function addMarkerUsers(data){
 		var Lonval = element.Lon;
 		var Latval = element.Lat;
 		
+
 		var uluru = {lat: parseFloat(Latval), lng: parseFloat(Lonval)};
 		
-		var contentString = '<div id="content">'+
-			'<span class="terminal_id"style="display:none;">'+element.Username+'</span>' +
-			'<div id="siteNotice">'+
-			element.Username.toString() +
-			'</div>';
+		var contentString = '';
+		if (element.IsDriver==1) {
+			contentString = '<div id="content">'+
+			'<span class="Car_ID"style="display:none;">'+element.Username+'</span>' +
+			'<div id="vehicleDetails">'+
+				element.Username.toString() +
+			'</div><hr />'+
+			'<a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Report</a> | ' +
+			'<a href="#"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Tip</a>';
+		}else{
+			contentString = '<div id="content">'+
+			'<span class="User_ID"style="display:none;">'+element.Username+'</span>' +
+			'<div id="userDetails">'+
+				element.Username.toString() +
+			'</div><hr />'+
+			'<div><b>Mood:<i class="em em-satisfied"></i></b></div>';			
+		}
+
 
 		var infowindow = new google.maps.InfoWindow({
 		  content: contentString
