@@ -20,8 +20,13 @@ function addMarkerUsers(data){
 		  content: contentString
 		});
 
-		
-		var picimg = "img/users.png";
+		var picimg='';
+
+		if (element.IsDriver==1){
+			picimg = "img/car-icon.png";
+		}else{
+			picimg = "img/users.png";
+		}
 
 		var marker = new google.maps.Marker({
 		  position: uluru,
