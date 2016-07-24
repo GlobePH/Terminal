@@ -1,4 +1,8 @@
 # Terminal
 Crowd source terminal monitoring with Love <3
 
-![Alt text](/web.jpg?raw=true "Optional Title")
+<b>Terminal App in Browser</b>
+<img src="https://github.com/GlobePH/Terminal/blob/master/web.JPG">
+</hr >
+
+
