@@ -44,7 +44,7 @@ function addMarkerUsers(data){
 function SetUsers(idNum){
 	$.ajax({
 	type: "GET",
-	url: "http://192.168.166.243/terminal/dataUser/" + idNum,
+	url: "http://192.168.171.204/terminal/dataUser/" + idNum,
 	async: true, //blocks window closes
 	success: function(data){
 		alert(data);

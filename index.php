@@ -16,6 +16,8 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="css/sidebar.css">
     <style>
       html, body {
@@ -107,7 +109,7 @@ $(document).ready(function () {
 </script>
 </head>
 
-<body style="background-color:white; color:#3763ff; font-family: 'Lato',serif;">
+<body style="background-color:white; color:#3763ff; font-family: 'Roboto';">
   <div id="wrapper">
        <div class="overlay"></div>
     
@@ -135,7 +137,7 @@ $(document).ready(function () {
 					          $.ajax({
 					                type: 'POST',
 					                async: true,
-					                url: "http://192.168.166.243/feed/add",
+					                url: "http://192.168.171.204/feed/add",
 					                data: dataparam,
 					                success: function (data) {
 					                    //alert("already add");
@@ -155,7 +157,7 @@ $(document).ready(function () {
 					          $.ajax({
 					                type: 'POST',
 					                async: true,
-					                url: "http://192.168.166.243/feed/add",
+					                url: "http://192.168.171.204/feed/add",
 					                data: dataparam,
 					                success: function (data) {
 					                    //alert("already add");
@@ -187,7 +189,7 @@ $(document).ready(function () {
 					            $.ajax({
 					                type: 'POST',
 					                async: true,
-					                url: "http://192.168.166.243/transaction/reaction/add",
+					                url: "http://192.168.171.204/transaction/reaction/add",
 					                data: dataparam,
 					                success: function (data) {
 					                    if (reactionId == 0) {
@@ -215,7 +217,7 @@ $(document).ready(function () {
 							var TerminalDetail = function (){
 								var id = window.idNum.toString();
 								//$("#terminalId").val(id);
-								var xurl = "http://192.168.166.243/terminal/";
+								var xurl = "http://192.168.171.204/terminal/";
 								var param = 'data/' + id;
 								var t = xurl + param;
 								$.ajax({
@@ -238,6 +240,7 @@ $(document).ready(function () {
 									$.each(data, function(index, element) {
 										feeds += '<div style="width:100%;"><div class="thumbnail"><div class="caption">';
 										feeds += '<h3>Terminal Name</h3>';
+										feeds += '<p><b>Average of '+element.AvePer30Mins+' passenger a minute.</b></p>';
 										feeds += '<p><b>Status: ' + element.Count +' ' + getStatus(element.Count) +'</b></p><p><b style="color:blue;">Statistics</b></p>';
 										feeds += '<p><b>Satisfied: '+ element.NoOfHappy.toString() +' <i class="em em-satisfied"></i> | Angry: '+ element.NoOfAngry.toString() + ' <i class="em em-angry"></i></b></p>';
 										feeds += '</div></div></div>';
@@ -284,7 +287,7 @@ $(document).ready(function () {
 							var id = window.idNum.toString();
 							$("#terminalId").val(id);
 							console.log(id);
-							var xurl = "http://192.168.166.243/";
+							var xurl = "http://192.168.171.204/";
 							var param = 'feed/' + id;
 							var t = xurl + param;
 							$.ajax({
